@@ -18,3 +18,8 @@
 6. Use `:Mason` to install the necesseray LSP, Formatters and Linters
 7. Use `:TSInstall` to install necesseray Treeshaker configurations (Use `:TSModuleInfo` to list down all treeshaker configuration)
 8. Run `:Lazy sync` to update Nvim plugins
+
+## How to configure new languages
+1. In `lspconfig.lua`, add a new LSP for a new programming language, for example: Golang would be `gopls` in the `servers` array.
+2. Run `:Mason` to install the language servers and formatters if needed.
+3. In `conform.lua`, add a new entry for the langauge to use which formatters, for example: Golang would be `go = { "gofmt" }`
