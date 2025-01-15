@@ -3,6 +3,7 @@
 - [Neovim](https://github.com/neovim/neovim) >= v0.10.0
 - [Ripgrep](https://github.com/BurntSushi/ripgrep) 
 - [Nerdfont](https://www.nerdfonts.com/) 
+- [Lazygit](https://github.com/jesseduffield/lazygit) 
 
 ## Description
 - The main nvchad repo (NvChad/NvChad) is used as a plugin by this repo.
