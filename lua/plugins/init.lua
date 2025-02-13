@@ -30,6 +30,7 @@ return {
         "tsx",
         "dockerfile",
         "jsdoc",
+        "prisma",
       },
     },
     highlight = { enable = true },
