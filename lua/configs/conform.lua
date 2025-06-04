@@ -4,7 +4,10 @@ local options = {
     css = { "prettier" },
     html = { "prettier" },
     js = { "prettier" },
+    vue = { "prettier" },
     python = { "autopep8" },
+    terraform = { "terraform_fmt" },
+    tf = { "terraform_fmt" },
   },
 
   format_on_save = {
