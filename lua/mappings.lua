@@ -5,10 +5,16 @@ require "nvchad.mappings"
 local map = vim.keymap.set
 local gitsigns = require "gitsigns"
 local nomap = vim.keymap.del
+local utils = require "custom.utils"
 
 nomap("n", "<C-n>")
 nomap("n", "<leader>v")
 nomap("n", "<leader>h")
+
+-- Map ; to enter command mode
+map("n", ";", ":", { desc = "CMD enter command mode" })
+
+map("n", "gd", vim.lsp.buf.definition, { desc = "LSP goto definition", noremap = true, silent = true })
 
 -- Editor split
 map("n", "<leader>vs", "<Cmd>vsplit<CR>")
@@ -18,9 +24,6 @@ map("n", "<C-O>", "<C-O>", { noremap = true })
 
 -- Neotree
 map("n", "<C-b>", "<Cmd>Neotree toggle<CR>", { noremap = true, silent = true })
-
-map("n", ";", ":", { desc = "CMD enter command mode" })
-map("i", "jk", "<ESC>")
 
 map({ "n", "i", "t" }, "<C-p>", "<cmd>Telescope find_files hidden=true <cr>", { desc = "telescope find files" })
 map("n", "dd", '"_dd', { noremap = true })
@@ -52,3 +55,13 @@ map("n", "<MouseMove>", require("hover").hover_mouse, { desc = "hover.nvim (mous
 
 -- Undotree
 map({ "n", "v" }, "<leader>ut", vim.cmd.UndotreeToggle)
+
+map("n", "ft", utils.set_filetype, { desc = "Set filetype" })
+
+-- To quit all LSP clients for current buffer
+map("n", "<leader>ql", function()
+  for _, client in pairs(vim.lsp.get_clients { bufnr = 0 }) do
+    client.stop(client)
+  end
+  vim.notify("Detached LSP from current buffer", vim.log.levels.INFO)
+end, { desc = "Stop LSP for this buffer" })

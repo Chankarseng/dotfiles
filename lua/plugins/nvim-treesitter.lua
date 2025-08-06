@@ -1,0 +1,25 @@
+return {
+  "nvim-treesitter/nvim-treesitter",
+  opts = {
+    ensure_installed = {
+      "vim",
+      "lua",
+      "vimdoc",
+      "html",
+      "css",
+      "vue",
+      "typescript",
+      "javascript",
+      "yaml",
+      "go",
+      "tsx",
+      "dockerfile",
+      "jsdoc",
+      "prisma",
+      "scss",
+      "php",
+    },
+  },
+  highlight = { enable = true },
+  context_commentstring = { enable = true },
+}
