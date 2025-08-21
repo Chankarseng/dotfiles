@@ -28,14 +28,14 @@ map("n", "<C-b>", "<Cmd>Neotree toggle<CR>", { noremap = true, silent = true })
 map({ "n", "i", "t" }, "<C-p>", "<cmd>Telescope find_files hidden=true <cr>", { desc = "telescope find files" })
 map("n", "dd", '"_dd', { noremap = true })
 map({ "n", "v" }, "d", '"_d', { noremap = true })
-map({ "n", "v", "t" }, "<leader>git", function()
-  require("nvchad.term").toggle {
-    pos = "sp",
-    id = "git_floating",
-    cmd = "lazygit",
-    size = 0.7,
-  }
-end, { desc = "Toggle floating lazy git window" })
+-- map({ "n", "v", "t" }, "<leader>git", function()
+--   require("nvchad.term").toggle {
+--     pos = "sp",
+--     id = "git_floating",
+--     cmd = "lazygit",
+--     size = 0.7,
+--   }
+-- end, { desc = "Toggle floating lazy git window" })
 -- Git Signs
 map("n", "<leader>tb", gitsigns.toggle_current_line_blame)
 map("n", "<leader>hb", function()
