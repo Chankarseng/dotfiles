@@ -65,3 +65,5 @@ map("n", "<leader>ql", function()
   end
   vim.notify("Detached LSP from current buffer", vim.log.levels.INFO)
 end, { desc = "Stop LSP for this buffer" })
+
+map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP code actions" })
