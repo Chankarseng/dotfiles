@@ -11,3 +11,6 @@ git clone https://github.com/karseng/dotfiles.git
 cd dotfiles
 ./install.sh
 ```
+## Mac OS setup
+- Install [Homebrew](https://brew.sh/)
+- Run `./install.sh`
