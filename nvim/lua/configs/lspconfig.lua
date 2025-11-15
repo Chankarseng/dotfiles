@@ -1,7 +1,7 @@
 -- load defaults i.e lua_lsp
 require("nvchad.configs.lspconfig").defaults()
 
-require("lspconfig").ts_ls.setup {
+vim.lsp.config("ts_ls", {
   filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
   init_options = {
     plugins = {
@@ -12,7 +12,7 @@ require("lspconfig").ts_ls.setup {
       },
     },
   },
-}
+})
 
 local servers = {
   "vue_ls",
@@ -27,6 +27,7 @@ local servers = {
   "intelephense",
   "tailwindcss",
   "yamlls",
+  "astro",
 }
 
 vim.lsp.enable(servers)
