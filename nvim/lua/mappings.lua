@@ -67,3 +67,7 @@ map("n", "<leader>ql", function()
 end, { desc = "Stop LSP for this buffer" })
 
 map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP code actions" })
+
+-- UFO Configuration
+map("n", "zR", require("ufo").openAllFolds)
+map("n", "zM", require("ufo").closeAllFolds)
