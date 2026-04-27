@@ -9,6 +9,7 @@ M.set_filetype = function()
     "go",
     "rust",
     "html",
+    "php",
     "css",
     "json",
     "yaml",

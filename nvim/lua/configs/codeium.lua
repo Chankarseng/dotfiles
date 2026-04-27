@@ -34,9 +34,9 @@ codeium.setup {
       -- Clear the virtual text.
       clear = false,
       -- Cycle to the next completion.
-      next = "<C-M-]>",
+      next = "<M-]>",
       -- Cycle to the previous completion.
-      prev = "<C-M-[>",
+      prev = "<M-[>",
     },
   },
 }

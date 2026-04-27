@@ -10,14 +10,13 @@ local options = {
     terraform = { "terraform_fmt" },
     tf = { "terraform_fmt" },
     sh = { "shfmt" },
-    astro = { "prettier" },
   },
 
   format_on_save = {
     -- These options will be passed to conform.format()
-    -- async = true,
-    timeout_ms = 2500,
+    -- timeout_ms = 1000,
     lsp_fallback = true,
+    -- async = true,
   },
 }
 

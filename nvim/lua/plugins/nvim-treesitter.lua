@@ -1,6 +1,5 @@
 return {
   "nvim-treesitter/nvim-treesitter",
-  auto_install = true,
   opts = {
     ensure_installed = {
       "vim",
@@ -19,7 +18,6 @@ return {
       "prisma",
       "scss",
       "php",
-      "astro",
     },
   },
   highlight = { enable = true },

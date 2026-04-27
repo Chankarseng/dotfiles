@@ -26,6 +26,8 @@ map("n", "<C-O>", "<C-O>", { noremap = true })
 map("n", "<C-b>", "<Cmd>Neotree toggle<CR>", { noremap = true, silent = true })
 
 map({ "n", "i", "t" }, "<C-p>", "<cmd>Telescope find_files hidden=true <cr>", { desc = "telescope find files" })
+
+map("n", "<leader>fu", ':lua require("telescope.builtin").lsp_references()<CR>', { noremap = true, silent = true })
 map("n", "dd", '"_dd', { noremap = true })
 map({ "n", "v" }, "d", '"_d', { noremap = true })
 -- map({ "n", "v", "t" }, "<leader>git", function()
@@ -44,7 +46,9 @@ end)
 
 -- Hover
 map("n", "K", require("hover").hover, { desc = "hover.nvim" })
-map("n", "gK", require("hover").hover_select, { desc = "hover.nvim (select)" })
+map("n", "gK", function()
+  require("hover").hover_select()
+end, { desc = "hover.nvim (select)" })
 map("n", "<MouseMove>", require("hover").hover_mouse, { desc = "hover.nvim (mouse)" })
 -- map("n", "<C-p>", function()
 --   require("hover").hover_switch "previous"
