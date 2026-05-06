@@ -28,7 +28,7 @@ local servers = {
   "vue_ls",
   "html",
   "cssls",
-  "ts_ls",
+  -- "ts_ls",
   "vtsls",
   -- "eslint",
   "jsonls",
@@ -42,6 +42,21 @@ local servers = {
   "astro",
   "gopls",
 }
+
+vim.lsp.config("vtsls", {
+  settings = {
+    typescript = {
+      inlayHints = {
+        parameterNames = { enabled = "literals" },
+        parameterTypes = { enabled = true },
+        variableTypes = { enabled = true },
+        propertyDeclarationTypes = { enabled = true },
+        functionLikeReturnTypes = { enabled = true },
+        enumMemberValues = { enabled = true },
+      },
+    },
+  },
+})
 
 vim.lsp.config("yamlls", {
   filetypes = { "yaml", "yml" },

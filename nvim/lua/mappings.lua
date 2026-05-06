@@ -47,7 +47,7 @@ end)
 -- Hover
 map("n", "K", require("hover").hover, { desc = "hover.nvim" })
 map("n", "gK", function()
-  require("hover").hover_select()
+  require("hover").enter()
 end, { desc = "hover.nvim (select)" })
 map("n", "<MouseMove>", require("hover").hover_mouse, { desc = "hover.nvim (mouse)" })
 -- map("n", "<C-p>", function()
