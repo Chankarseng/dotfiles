@@ -21,3 +21,9 @@ if [[ -f ~/.zshrc ]]; then
   mv ~/.zshrc ~/.zshrc.conf.bak.$current_date
 fi
 cp .zshrc ~/.zshrc
+
+# install rust
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+# install pnpm
+curl -fsSL https://get.pnpm.io/install.sh | sh -
