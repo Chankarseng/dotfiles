@@ -13,6 +13,11 @@ require('telescope').setup {
     ['ui-select'] = { require('telescope.themes').get_dropdown() },
   },
   find_command = { 'fd', '--type', 'f', '--hidden', '--follow' },
+  pickers = {
+    colorscheme = {
+      enable_preview = true,
+    },
+  },
 }
 pcall(require('telescope').load_extension, 'fzf')
 pcall(require('telescope').load_extension, 'ui-select')
