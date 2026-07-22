@@ -1,77 +1,58 @@
-require "nvchad.mappings"
+-- Clear highlights on search when pressing <Esc> in normal mode
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
--- add yours here
+vim.diagnostic.config {
+  update_in_insert = false,
+  severity_sort = true,
+  float = { border = 'rounded', source = 'if_many' },
+  underline = { severity = { min = vim.diagnostic.severity.WARN } },
 
-local map = vim.keymap.set
-local gitsigns = require "gitsigns"
-local nomap = vim.keymap.del
-local utils = require "custom.utils"
+  -- Can switch between these as you prefer
+  virtual_text = true, -- Text shows up at the end of the line
+  virtual_lines = false, -- Text shows up underneath the line, with virtual lines
 
-nomap("n", "<C-n>")
-nomap("n", "<leader>v")
-nomap("n", "<leader>h")
+  -- Auto open the float, so you can easily read the errors when jumping with `[d` and `]d`
+  jump = {
+    on_jump = function(_, bufnr)
+      vim.diagnostic.open_float {
+        bufnr = bufnr,
+        scope = 'cursor',
+        focus = false,
+      }
+    end,
+  },
+}
 
--- Map ; to enter command mode
-map("n", ";", ":", { desc = "CMD enter command mode" })
+-- ; to enter command mode
+vim.keymap.set('n', ';', ':', { desc = 'CMD enter command mode' })
 
-map("n", "gd", vim.lsp.buf.definition, { desc = "LSP goto definition", noremap = true, silent = true })
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
--- Editor split
-map("n", "<leader>vs", "<Cmd>vsplit<CR>")
-map("n", "<leader>hs", "<Cmd>split<CR>")
-map("n", "<C-I>", "<C-I>", { noremap = true })
-map("n", "<C-O>", "<C-O>", { noremap = true })
+-- Exit terminal mode in the telescope_builtin.terminal with a shortcut that is a bit easier
+-- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
+-- is not what someone will guess without a bit more experience.
+--
+-- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
+-- or just use <C-\><C-n> to exit terminal mode
+vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
--- Neotree
-map("n", "<C-b>", "<Cmd>Neotree toggle<CR>", { noremap = true, silent = true })
+-- Splits
+vim.keymap.set('n', '<leader>vs', '<Cmd>vsplit<CR>')
+vim.keymap.set('n', '<leader>hs', '<Cmd>split<CR>')
 
-map({ "n", "i", "t" }, "<C-p>", "<cmd>Telescope find_files hidden=true <cr>", { desc = "telescope find files" })
+vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+  callback = function() vim.hl.on_yank() end,
+})
 
-map("n", "<leader>fu", ':lua require("telescope.builtin").lsp_references()<CR>', { noremap = true, silent = true })
-map("n", "dd", '"_dd', { noremap = true })
-map({ "n", "v" }, "d", '"_d', { noremap = true })
--- map({ "n", "v", "t" }, "<leader>git", function()
---   require("nvchad.term").toggle {
---     pos = "sp",
---     id = "git_floating",
---     cmd = "lazygit",
---     size = 0.7,
---   }
--- end, { desc = "Toggle floating lazy git window" })
--- Git Signs
-map("n", "<leader>tb", gitsigns.toggle_current_line_blame)
-map("n", "<leader>hb", function()
-  gitsigns.blame_line { full = true }
-end)
+vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = 'LSP code actions' })
 
--- Hover
-map("n", "K", require("hover").hover, { desc = "hover.nvim" })
-map("n", "gK", function()
-  require("hover").enter()
-end, { desc = "hover.nvim (select)" })
-map("n", "<MouseMove>", require("hover").hover_mouse, { desc = "hover.nvim (mouse)" })
--- map("n", "<C-p>", function()
---   require("hover").hover_switch "previous"
--- end, { desc = "hover.nvim (previous source)" })
--- map("n", "<C-n>", function()
---   require("hover").hover_switch "next"
--- end, { desc = "hover.nvim (next source)" })
-
--- Undotree
-map({ "n", "v" }, "<leader>ut", vim.cmd.UndotreeToggle)
-
-map("n", "ft", utils.set_filetype, { desc = "Set filetype" })
-
--- To quit all LSP clients for current buffer
-map("n", "<leader>ql", function()
-  for _, client in pairs(vim.lsp.get_clients { bufnr = 0 }) do
-    client.stop(client)
-  end
-  vim.notify("Detached LSP from current buffer", vim.log.levels.INFO)
-end, { desc = "Stop LSP for this buffer" })
-
-map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP code actions" })
-
--- UFO Configuration
-map("n", "zR", require("ufo").openAllFolds)
-map("n", "zM", require("ufo").closeAllFolds)
+vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
+vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
+vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
+vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+--
+-- Toggle commentj
+vim.keymap.set('n', '<leader>/', 'gcc', { desc = 'toggle comment', remap = true })
+vim.keymap.set('v', '<leader>/', 'gc', { desc = 'toggle comment', remap = true })

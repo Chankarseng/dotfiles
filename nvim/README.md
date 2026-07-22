@@ -6,8 +6,8 @@
 - [Lazygit](https://github.com/jesseduffield/lazygit) 
 
 ## Description
-- The main nvchad repo (NvChad/NvChad) is used as a plugin by this repo.
-- So you just import its modules , like `require "nvchad.options" , require "nvchad.mappings"`
+- Forked from Kickstart.nvim
+- Adding new plugins will be done via the `./lua/plugins` folder
 
 ## How to install
 1. Install Neovim, Ripgrep, Nerdfont
@@ -17,7 +17,6 @@
 5. Wait for installation of the packages
 6. Use `:Mason` to install the necesseray LSP, Formatters and Linters
 7. Use `:TSInstall` to install necesseray Treeshaker configurations (Use `:TSModuleInfo` to list down all treeshaker configuration)
-8. Run `:Lazy sync` to update Nvim plugins
 
 ## How to configure new languages
 1. In `lspconfig.lua`, add a new LSP for a new programming language, for example: Golang would be `gopls` in the `servers` array. List of LSP servers can be found [here](https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md)

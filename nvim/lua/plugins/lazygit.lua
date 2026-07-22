@@ -1,19 +1,2 @@
-return {
-  "kdheepak/lazygit.nvim",
-  lazy = true,
-  cmd = {
-    "LazyGit",
-    "LazyGitConfig",
-    "LazyGitCurrentFile",
-    "LazyGitFilter",
-    "LazyGitFilterCurrentFile",
-  },
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-  },
-  -- setting the keybinding for LazyGit with 'keys' is recommended in
-  -- order to load the plugin when the command is run for the first time
-  keys = {
-    { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
-  },
-}
+vim.pack.add { 'https://github.com/kdheepak/lazygit.nvim', 'https://github.com/nvim-telescope/telescope.nvim' }
+vim.keymap.set({ 'n', 't' }, '<leader>lg', ':LazyGit<CR>', { silent = true, desc = 'Toggle LazyGit' })
