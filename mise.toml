@@ -1,0 +1,11 @@
+[tools]
+node = "lts"
+python = "3.13"
+rust = "stable"
+go = "latest"
+terraform = "latest"
+
+# PHP and Composer are installed via Homebrew instead of mise.
+# The default mise PHP plugin fails to build on macOS (PEAR download error,
+# OpenSSL 3.x incompatibility). brew install php handles this cleanly.
+# To use: brew install php && brew install composer

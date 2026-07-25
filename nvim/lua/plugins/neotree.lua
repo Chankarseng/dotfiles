@@ -13,6 +13,9 @@ require('neo-tree').setup {
     position = 'right',
   },
   filesystem = {
+    follow_current_file = {
+      enabled = true,
+    },
     filtered_items = {
       visible = false,
       show_hidden_count = true,
@@ -28,11 +31,6 @@ require('neo-tree').setup {
     window = {
       mappings = {
         ['\\'] = 'close_window',
-      },
-      {
-        follow_current_file = {
-          enabled = true,
-        },
       },
     },
   },
