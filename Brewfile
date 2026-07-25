@@ -21,7 +21,9 @@ brew "mise"
 brew "php"
 brew "composer"
 brew "tree-sitter"
+brew "tree-sitter-cli"
 brew "uv"
+brew "lazygit"
 
 brew "docker"
 
