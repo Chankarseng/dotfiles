@@ -3,6 +3,7 @@ brew "git"
 brew "gh"
 brew "neovim"
 brew "tmux"
+brew "tmux-mem-cpu-load"
 
 brew "ripgrep"
 brew "fd"
@@ -36,6 +37,8 @@ brew "direnv"
 
 brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
+brew "zsh-completions"
+brew "zsh-history-substring-search"
 brew "starship"
 
 # Useful utils
