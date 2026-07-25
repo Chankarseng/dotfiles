@@ -2,6 +2,8 @@
 
 current_date=$(date +%Y%m%d%H%M%S)
 xcode-select --install
+# install homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 backup() {
   local target="$1"
@@ -19,6 +21,8 @@ link() {
 link "$PWD/nvim" ~/.config/nvim
 link "$PWD/.tmux.conf" ~/.tmux.conf
 link "$PWD/.zshrc" ~/.zshrc
+
+source ./brew.sh
 
 mise install
 corepack enable
