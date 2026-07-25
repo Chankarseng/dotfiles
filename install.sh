@@ -1,6 +1,7 @@
 #!/bin/bash
 
 current_date=$(date +%Y%m%d%H%M%S)
+xcode-select --install
 
 backup() {
   local target="$1"
