@@ -1,9 +1,18 @@
 #!/bin/bash
+set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 current_date=$(date +%Y%m%d%H%M%S)
-xcode-select --install
-# install homebrew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+if ! xcode-select -p &>/dev/null; then
+  xcode-select --install
+  echo "Please complete the Xcode CLI Tools installation, then re-run this script."
+  exit 1
+fi
+
+if ! command -v brew &>/dev/null; then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
 
 if [[ -x /opt/homebrew/bin/brew ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -13,9 +22,8 @@ fi
 
 backup() {
   local target="$1"
-
   if [ -e "$target" ] && [ ! -L "$target" ]; then
-    mv "$target" "$target.bak.$CURRENT_DATE"
+    mv "$target" "$target.bak.$current_date"
   fi
 }
 
@@ -24,12 +32,21 @@ link() {
   mkdir -p "$(dirname "$2")"
   ln -sfn "$1" "$2"
 }
-link "$PWD/nvim" ~/.config/nvim
-link "$PWD/.tmux.conf" ~/.tmux.conf
-link "$PWD/.zshrc" ~/.zshrc
 
-source ./brew.sh
+link "$SCRIPT_DIR/nvim" ~/.config/nvim
+link "$SCRIPT_DIR/.tmux.conf" ~/.tmux.conf
+link "$SCRIPT_DIR/.zshrc" ~/.zshrc
 
-mise install
+"$SCRIPT_DIR/brew.sh"
+
+if ! command -v mise &>/dev/null; then
+  brew install mise
+fi
+eval "$(mise activate zsh)"
+
 corepack enable
-nvim --headless "+Lazy! sync" +qa
+mise install
+
+if ! brew list php &>/dev/null; then
+  brew install php
+fi
