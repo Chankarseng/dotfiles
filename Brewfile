@@ -18,6 +18,9 @@ brew "git-delta"
 
 # Development
 brew "mise"
+brew "php"
+brew "composer"
+brew "tree-sitter"
 brew "uv"
 
 brew "docker"

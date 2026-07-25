@@ -14,12 +14,6 @@ path=(
   $path
 )
 
-# Oh My Zsh
-export ZSH="$HOME/.oh-my-zsh"
-plugins=(git autoswitch_virtualenv zsh-syntax-highlighting)
-
-source "$ZSH/oh-my-zsh.sh"
-
 # Prompt & plugins
 [[ -f "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]] && source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 [[ -f "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]] && source "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"

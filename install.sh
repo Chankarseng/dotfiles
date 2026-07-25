@@ -39,14 +39,7 @@ link "$SCRIPT_DIR/.zshrc" ~/.zshrc
 
 "$SCRIPT_DIR/brew.sh"
 
-if ! command -v mise &>/dev/null; then
-  brew install mise
-fi
-eval "$(mise activate zsh)"
+eval "$(mise activate bash)"
 
 corepack enable
 mise install
-
-if ! brew list php &>/dev/null; then
-  brew install php
-fi
