@@ -12,5 +12,14 @@ cd dotfiles
 ./install.sh
 ```
 ## Mac OS setup
+- (Optional) - xcode-select --install
 - Install [Homebrew](https://brew.sh/)
+- Run `./brew.sh`
 - Run `./install.sh`
+
+# Update
+For updating all the pacakges (brew, mise, zsh)
+Run the following commands:
+```bash
+./updates.sh
+```

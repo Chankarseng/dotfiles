@@ -2,28 +2,23 @@
 
 current_date=$(date +%Y%m%d%H%M%S)
 
-# nvim
-# backup existing config if config already exist
-if [ -d ~/.config/nvim ]; then
-  mv ~/.config/nvim ~/.config/nvim.bak.$current_date
-fi
-cp -r nvim ~/.config/nvim
+backup() {
+  local target="$1"
 
-# tmux
-# backup existing config if config already exist
-if [ -f ~/.tmux.conf ]; then
-  mv ~/.tmux.conf ~/.tmux.conf.bak.$current_date
-fi
-cp .tmux.conf ~/.tmux.conf
+  if [ -e "$target" ] && [ ! -L "$target" ]; then
+    mv "$target" "$target.bak.$CURRENT_DATE"
+  fi
+}
 
-# zsh
-if [[ -f ~/.zshrc ]]; then
-  mv ~/.zshrc ~/.zshrc.conf.bak.$current_date
-fi
-cp .zshrc ~/.zshrc
+link() {
+  backup "$2"
+  mkdir -p "$(dirname "$2")"
+  ln -sfn "$1" "$2"
+}
+link "$PWD/nvim" ~/.config/nvim
+link "$PWD/.tmux.conf" ~/.tmux.conf
+link "$PWD/.zshrc" ~/.zshrc
 
-# install rust
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-
-# install pnpm
-curl -fsSL https://get.pnpm.io/install.sh | sh -
+mise install
+corepack enable
+nvim --headless "+Lazy! sync" +qa
