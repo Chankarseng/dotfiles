@@ -31,7 +31,7 @@ brew "direnv"
 
 brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
-brew "spaceship"
+brew "starship"
 
 # Useful utils
 brew "wget"
