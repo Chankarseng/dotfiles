@@ -43,8 +43,13 @@ brew "watch"
 brew "shellcheck"
 brew "shfmt"
 
+# DB clients
+brew "libpq"
+brew "sqlite"
+
 # Apps
 cask "ghostty"
 cask "font-jetbrains-mono-nerd-font"
 cask "raycast"
 cask "rectangle"
+cask "obsidian"
