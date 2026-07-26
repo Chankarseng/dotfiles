@@ -106,7 +106,8 @@ function auto-venv() {
 add-zsh-hook chpwd auto-venv
 
 # zsh options
-setopt correct
+# setopt correct
+unset -f command_not_found_handler
 setopt globdots
 setopt interactive_comments
 
