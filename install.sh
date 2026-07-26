@@ -39,6 +39,10 @@ link "$SCRIPT_DIR/.zshrc" ~/.zshrc
 
 "$SCRIPT_DIR/brew.sh"
 
+if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+fi
+
 eval "$(mise activate bash)"
 
 corepack enable
