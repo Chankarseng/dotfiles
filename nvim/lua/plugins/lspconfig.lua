@@ -40,7 +40,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 ---@type table<string, vim.lsp.Config>
 local servers = {
-
   vue_ls = {},
   html = {},
   cssls = {},
@@ -70,6 +69,7 @@ local servers = {
       },
     },
   },
+  biome = {},
   stylua = {},
   -- Special Lua Config, as recommended by neovim help docs
   lua_ls = {
