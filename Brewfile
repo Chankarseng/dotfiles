@@ -27,6 +27,7 @@ brew "uv"
 brew "lazygit"
 
 brew "docker"
+brew "docker-compose"
 
 # Choose ONE:
 brew "colima"

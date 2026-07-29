@@ -36,6 +36,7 @@ link() {
 link "$SCRIPT_DIR/nvim" ~/.config/nvim
 link "$SCRIPT_DIR/.tmux.conf" ~/.tmux.conf
 link "$SCRIPT_DIR/.zshrc" ~/.zshrc
+link "$SCRIPT_DIR/mise.toml" ~/.config/mise/config.toml
 
 "$SCRIPT_DIR/brew.sh"
 
@@ -47,3 +48,6 @@ eval "$(mise activate bash)"
 
 corepack enable
 mise install
+
+mkdir -p ~/.docker/cli-plugins
+ln -sfn $(brew --prefix)/bin/docker-compose ~/.docker/cli-plugins/docker-compose
